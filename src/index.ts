@@ -1,16 +1,9 @@
 
 // all the imports here
-import express from 'express';
+import app from './app';
+import config from './app/config';
 
-// call the express app
-const app = express();
-
-const port = 5000;
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// running the server
+app.listen(config.port, () => {
+  console.log(`ecoExpress app is listening on port ${config.port}`);
+});
