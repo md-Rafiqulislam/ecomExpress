@@ -1,0 +1,23 @@
+{
+  "name": "ecomexpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/md-Rafiqulislam/ecomExpress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/md-Rafiqulislam/ecomExpress/issues"
+  },
+  "homepage": "https://github.com/md-Rafiqulislam/ecomExpress#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
