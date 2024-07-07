@@ -20,4 +20,5 @@ export type TProduct = {
         TVarient
     ];
     inventory: TInventory;
-}
+    isDeleted?: boolean;
+};
