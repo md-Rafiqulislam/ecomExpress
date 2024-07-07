@@ -3,6 +3,7 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import { productRoutes } from './app/modules/product/product.routes';
+import { orderRoutes } from './app/modules/order/order.routes';
 
 // call the express app
 const app:Application = express();
@@ -13,7 +14,9 @@ app.use(cors());
 
 
 // all the product routes
-app.use('/api/products/', productRoutes);
+app.use('/api/products', productRoutes);
+// all the order routes
+app.use('/api/orders', orderRoutes);
 
 
 // testing routes
