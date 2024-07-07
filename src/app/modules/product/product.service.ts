@@ -26,9 +26,9 @@ const getAllProductsFromDb = async () => {
 
 
 // delete product from db
-// const deleteProductFromDb = async (productId: string, payload: Partial<TProduct>) => {
-//     const product = Product.findOneAndUpdate({_id: productId});
-// };
+const deleteProductFromDb = async (productId: string) => {
+    const product = Product.findOneAndUpdate({_id: productId}, {isDeleted: true});
+};
 
 
 // all the exports here
@@ -36,5 +36,5 @@ export const productServices = {
     createProductIntoDb,
     getSingleProductFromDb,
     getAllProductsFromDb,
-    // deleteProductFromDb,
+    deleteProductFromDb,
 };

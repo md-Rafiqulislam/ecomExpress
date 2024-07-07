@@ -18,7 +18,7 @@ router.post('/', productControllers.createproduct);
 router.get('/', productControllers.getAllProuducts);
 
 // delete product
-// router.put('/:productId');
+router.delete('/:productId', productControllers.deleteProduct);
 
 
 // export the product router objecr
