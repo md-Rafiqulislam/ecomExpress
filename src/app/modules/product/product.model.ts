@@ -9,10 +9,12 @@ const varientSchema = new Schema<TVarient>({
     type: {
         type: String,
         requried: [true, 'Product varient type is required.'],
+        trim: true,
     },
     value: {
         type: String,
         required: [true, 'Product varient value is required.'],
+        trim: true,
     },
 });
 
@@ -35,10 +37,12 @@ const productSchema = new Schema<TProduct>({
     name: {
         type: String,
         required: [true, 'Product name is required.'],
+        trim: true,
     },
     description: {
         type: String,
         required: [true, 'Product description is required.'],
+        trim: true,
     },
     price: {
         type: Number,
@@ -47,11 +51,13 @@ const productSchema = new Schema<TProduct>({
     category: {
         type: String,
         required: [true, 'Product category is required.'],
+        trim: true,
     },
     tags: [
         {
             type: String,
             required: [true, 'Product tag is required.'],
+            trim: true,
         }
     ],
     variants: {
