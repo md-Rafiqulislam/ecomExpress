@@ -20,6 +20,9 @@ router.get('/', productControllers.getAllProuducts);
 // delete product
 router.delete('/:productId', productControllers.deleteProduct);
 
+// update product
+router.put('/:productId', productControllers.updateProduct);
+
 
 // export the product router objecr
 export const productRoutes = router;

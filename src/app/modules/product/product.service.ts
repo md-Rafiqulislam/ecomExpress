@@ -35,10 +35,29 @@ const deleteProductFromDb = async (productId: string) => {
 };
 
 
+// update product into database
+const updateProductIntoDb = async (productId: string, payload: Partial<TProduct>) => {
+    const product = await Product.findById({_id: productId});
+    
+    if(!product) {
+        throw new Error ('The product is not in the data base');
+    }
+
+    if(product?.isDeleted) {
+        throw new Error ('The product is not in the data base');
+    }
+
+    const result = await Product.findByIdAndUpdate({_id: productId}, payload, {new: true});
+    return result;
+
+};
+
+
 // all the exports here
 export const productServices = {
     createProductIntoDb,
     getSingleProductFromDb,
     getAllProductsFromDb,
     deleteProductFromDb,
+    updateProductIntoDb,
 };

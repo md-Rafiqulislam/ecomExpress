@@ -17,7 +17,10 @@ const createproduct = async (req: Request, res: Response) => {
             data: result,
         });
     } catch (error) {
-        console.log(error);
+        res.status(400).json({
+            success: false,
+            message: "Product can not created for something unusual",
+        });
     }
 }
 
@@ -78,6 +81,28 @@ const deleteProduct = async (req: Request, res: Response) => {
         res.status(400).json({
             success: false,
             message: 'Product can not deleted form the database',
+        });
+    }
+}
+
+
+// update product
+const updateProduct = async (req: Request, res: Response) => {
+    try {
+        const productData = req.body;
+        const {productId} = req.params;
+        const result = await productServices.updateProductIntoDb(productId, productData);
+
+
+        res.status(200).json({
+            success: true,
+            message: "Product updated successfully!",
+            data: result,
+        });
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: 'Product can not updated form the database',
         })
     }
 }
@@ -89,4 +114,5 @@ export const productControllers = {
     getSingleProduct,
     getAllProuducts,
     deleteProduct,
+    updateProduct
 };
