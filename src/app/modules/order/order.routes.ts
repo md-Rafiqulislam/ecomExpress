@@ -8,7 +8,7 @@ const router = Router();
 
 
 // create order
-router.post('/orders', orderControllers.createOrder);
+router.post('/', orderControllers.createOrder);
 
 // export the router object as order router
 export const orderRoutes = router;

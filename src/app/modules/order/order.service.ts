@@ -12,13 +12,21 @@ const createOrderIntoDb = async (payload: TOrder) => {
     if(!product) {
         throw new Error('the product is not found.');
     }
+
+    if(product.isDeleted) {
+        throw new Error('the product is already deleted.');
+    }
+
     let productQuantity = product.inventory.quantity;
     if(productQuantity < quantity) {
         throw new Error('the product stock is insufficient.');
     }
 
+
     const result = await Order.create(payload);
-    productQuantity = productQuantity - quantity;
+    productQuantity -= quantity;
+
+    await Product.findByIdAndUpdate({_id: productId}, {'inventory.quantity': productQuantity}, {new: true});
 
     return result;
 };
