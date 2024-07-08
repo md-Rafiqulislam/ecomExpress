@@ -32,7 +32,15 @@ const createOrderIntoDb = async (payload: TOrder) => {
 };
 
 
+// get all the orders
+const getAllOrdersFromDb = async () => {
+    const result = await Order.find();
+    return result;
+};
+
+
 // all the exports here
 export const orderServices = {
     createOrderIntoDb,
+    getAllOrdersFromDb,
 }

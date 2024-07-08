@@ -24,7 +24,27 @@ const createOrder = async (req: Request, res: Response) => {
 };
 
 
+// get all orders
+const getAllOrders = async (req: Request, res: Response) => {
+    try {
+        const result = await orderServices.getAllOrdersFromDb();
+
+        res.status(200).json({
+            success: true,
+            message: 'Order fetched successfully!',
+            data: result,
+        });
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: 'Order can not fetched for something unusal',
+        });
+    }
+}
+
+
 // all the exports here
 export const orderControllers = {
     createOrder,
+    getAllOrders,
 }
