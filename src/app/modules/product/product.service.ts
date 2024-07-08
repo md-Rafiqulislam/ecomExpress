@@ -13,21 +13,25 @@ const createProductIntoDb = async (payload: TProduct) => {
 
 // get single product form db
 const getSingleProductFromDb = async (id: string) => {
-    const result = await Product.findOne({_id: id});
+    const result = await Product.findById({_id: id});
+    if(result?.isDeleted) {
+        throw new Error ('The product is not in the data base');
+    }
     return result;
 };
 
 
 // get all the products from db
 const getAllProductsFromDb = async () => {
-    const result = await Product.find();
+    const result = await Product.find({isDeleted: false});
     return result;
 };
 
 
 // delete product from db
 const deleteProductFromDb = async (productId: string) => {
-    const product = Product.findOneAndUpdate({_id: productId}, {isDeleted: true});
+    const product = await Product.findOneAndUpdate({_id: productId}, {isDeleted: true});
+    return {};
 };
 
 

@@ -8,11 +8,11 @@ import { productControllers } from "./product.controller";
 const router = Router();
 
 
-// get single product
-router.get('/:productId', productControllers.getSingleProduct);
-
 // create product into database
 router.post('/', productControllers.createproduct);
+
+// get single product
+router.get('/:productId', productControllers.getSingleProduct);
 
 // get all the products
 router.get('/', productControllers.getAllProuducts);

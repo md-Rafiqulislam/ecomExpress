@@ -36,8 +36,8 @@ const getSingleProduct = async (req: Request, res: Response) => {
     } catch (error) {
         res.status(400).json({
             success: false,
-            message: "Product can not created for something unusual",
-        })
+            message: "Product can not retrived for something unusual",
+        });
     }
 
 };
