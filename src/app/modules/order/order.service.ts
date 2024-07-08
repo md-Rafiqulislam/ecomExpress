@@ -8,6 +8,11 @@ import { Order } from "./order.model";
 // create order into database
 const createOrderIntoDb = async (payload: TOrder) => {
     const {productId, quantity} = payload;
+
+    if(!productId) {
+        throw new Error('you do not give any valid product id');
+    }
+
     const product = await Product.findById(productId);
     if(!product) {
         throw new Error('the product is not found.');

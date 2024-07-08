@@ -19,6 +19,7 @@ const createOrder = async (req: Request, res: Response) => {
         res.status(400).json({
             success: false,
             message: 'Order can not created for something unusal',
+            error,
         });
     }
 };
@@ -38,6 +39,7 @@ const getAllOrders = async (req: Request, res: Response) => {
         res.status(400).json({
             success: false,
             message: 'Order can not fetched for something unusal',
+            error,
         });
     }
 }

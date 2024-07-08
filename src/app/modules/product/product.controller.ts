@@ -20,6 +20,7 @@ const createproduct = async (req: Request, res: Response) => {
         res.status(400).json({
             success: false,
             message: "Product can not created for something unusual",
+            error,
         });
     }
 }
@@ -40,6 +41,7 @@ const getSingleProduct = async (req: Request, res: Response) => {
         res.status(400).json({
             success: false,
             message: "Product can not retrived for something unusual",
+            error,
         });
     }
 
@@ -60,6 +62,7 @@ const getAllProuducts = async (req: Request, res: Response) => {
         res.status(400).json({
             success: false,
             message: 'Products can not fetch for something unusal',
+            error,
         });
     }
 }
@@ -81,6 +84,7 @@ const deleteProduct = async (req: Request, res: Response) => {
         res.status(400).json({
             success: false,
             message: 'Product can not deleted form the database',
+            error,
         });
     }
 }
@@ -103,7 +107,8 @@ const updateProduct = async (req: Request, res: Response) => {
         res.status(400).json({
             success: false,
             message: 'Product can not updated form the database',
-        })
+            error,
+        });
     }
 }
 
