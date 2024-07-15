@@ -30,8 +30,8 @@ const getAllProductsFromDb = async () => {
 
 // delete product from db
 const deleteProductFromDb = async (productId: string) => {
-    const product = await Product.findOneAndUpdate({_id: productId}, {isDeleted: true});
-    return {};
+    await Product.findOneAndUpdate({_id: productId}, {isDeleted: true});
+    return null;
 };
 
 
