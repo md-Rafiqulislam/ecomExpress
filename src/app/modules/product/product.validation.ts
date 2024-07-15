@@ -62,5 +62,5 @@ const updateProductValidationSchema = z.object({
 // all the exports here
 export const productValidationSchema = {
     createProductValidationSchema,
-    updateProductValidationSchema.
+    updateProductValidationSchema,
 };

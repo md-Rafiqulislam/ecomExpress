@@ -2,11 +2,13 @@
 // all the imports here
 import { TProduct } from "./product.interface";
 import { Product } from "./product.model"
+import { productValidationSchema } from "./product.validation";
 
 
 // create product into database
 const createProductIntoDb = async (payload: TProduct) => {
-    const result = await Product.create(payload);
+    const productData = await productValidationSchema.createProductValidationSchema.parse(payload);
+    const result = await Product.create(productData);
     return result;
 };
 
@@ -47,7 +49,8 @@ const updateProductIntoDb = async (productId: string, payload: Partial<TProduct>
         throw new Error ('The product is not in the data base');
     }
 
-    const result = await Product.findByIdAndUpdate({_id: productId}, payload, {new: true});
+    const productData = await productValidationSchema.updateProductValidationSchema.parse(payload);
+    const result = await Product.findByIdAndUpdate({_id: productId}, productData, {new: true});
     return result;
 
 };

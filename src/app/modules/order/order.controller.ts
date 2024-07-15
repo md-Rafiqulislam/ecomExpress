@@ -12,7 +12,7 @@ const createOrder = async (req: Request, res: Response) => {
 
         res.status(200).json({
             success: true,
-            message: 'Order created successfully!',
+            message: "Order created successfully!",
             data: result,
         });
     } catch (error) {
@@ -32,13 +32,13 @@ const getAllOrders = async (req: Request, res: Response) => {
 
         res.status(200).json({
             success: true,
-            message: 'Order fetched successfully!',
+            message: "Orders fetched successfully!",
             data: result,
         });
     } catch (error) {
         res.status(400).json({
             success: false,
-            message: 'Order can not fetched for something unusal',
+            message: "Order not found",
             error,
         });
     }
