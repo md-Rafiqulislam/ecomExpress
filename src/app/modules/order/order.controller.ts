@@ -1,11 +1,11 @@
 
 // all the imports here
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { orderServices } from "./order.service";
 
 
 // create order
-const createOrder = async (req: Request, res: Response) => {
+const createOrder = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const orderData = req.body;
         const result = await orderServices.createOrderIntoDb(orderData);
@@ -16,17 +16,18 @@ const createOrder = async (req: Request, res: Response) => {
             data: result,
         });
     } catch (error) {
-        res.status(400).json({
-            success: false,
-            message: 'Order can not created for something unusal',
-            error,
-        });
+        // res.status(400).json({
+        //     success: false,
+        //     message: 'Order can not created for something unusal',
+        //     error,
+        // });
+        next(error);
     }
 };
 
 
 // get all orders
-const getAllOrders = async (req: Request, res: Response) => {
+const getAllOrders = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const result = await orderServices.getAllOrdersFromDb();
 
@@ -36,11 +37,12 @@ const getAllOrders = async (req: Request, res: Response) => {
             data: result,
         });
     } catch (error) {
-        res.status(400).json({
-            success: false,
-            message: "Order not found",
-            error,
-        });
+        // res.status(400).json({
+        //     success: false,
+        //     message: "Order not found",
+        //     error,
+        // });
+        next(error);
     }
 }
 
