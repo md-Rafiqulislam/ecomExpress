@@ -24,6 +24,11 @@ app.get('/testRoutes', (req:Request, res: Response) => {
     res.send('Hello programmers, welcome to the world of programming!')
 });
 
+// testing routes
+app.get('/', (req:Request, res: Response) => {
+    res.send('Hello programmers, welcome to the world of programming!');
+});
+
 
 
 // not found route error handling
